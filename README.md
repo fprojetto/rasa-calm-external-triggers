@@ -33,24 +33,12 @@ The goal of this project is to showcase a flow that can be triggered from an ext
 
 This project uses [cohere](https://cohere.com/) as LLM mainly because you can run this project free of costs.
 
-1. Setup credentials
+1. [Install Rasa Pro](https://rasa.com/docs/rasa-pro/installation/python/installation)
+
+2. Setup credentials
 ```
 export RASA_PRO_LICENSE=<YOUR_RASA_LICENSE>
 export COHERE_API_KEY=<YOUR_COHERE_API_KEY>
-```
-
-2.  Setup python environment and install Rasa
-```
-python3.10 -m venv .venv
-
-cat > .venv/pip.conf <<-EOF
-[global]
-extra-index-url = https://europe-west3-python.pkg.dev/rasa-releases/rasa-plus-py/simple/
-EOF
-
-source .venv/bin/activate
-
-pip install rasa-pro
 ```
 
 3. Create a model using `rasa train`
