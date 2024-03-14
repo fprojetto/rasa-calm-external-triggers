@@ -1,0 +1,11 @@
+version: "3.1"
+
+actions:
+  - action_tell_id
+
+intents:
+- EXTERNAL_utter_greeting
+
+responses:
+  utter_greeting:
+    - text: Hi, dude! This message has been triggered by an external system, yeah!

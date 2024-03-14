@@ -1,0 +1,12 @@
+recipe: default.v1
+language: en
+pipeline:
+- name: LLMCommandGenerator
+  llm:
+    type: cohere
+    model: command
+
+policies:
+- name: FlowPolicy
+
+assistant_id: 20240313-150919-andante-pentagon

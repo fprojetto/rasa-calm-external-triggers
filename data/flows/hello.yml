@@ -1,0 +1,12 @@
+flows:
+  external_greeting:
+    description: greeting triggered by an external system
+    nlu_trigger:
+      - intent: EXTERNAL_utter_greeting
+    steps:
+      - action: utter_greeting
+
+  tell_id: 
+    description: tell conversation id
+    steps:
+      - action: action_tell_id
