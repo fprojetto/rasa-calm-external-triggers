@@ -33,35 +33,45 @@ The goal of this project is to showcase a flow that can be triggered from an ext
 
 This project uses [cohere](https://cohere.com/) as LLM mainly because you can run this project free of costs.
 
-1. [Install Rasa Pro](https://rasa.com/docs/rasa-pro/installation/python/installation)
+1. [Install Rasa Pro](https://rasa.com/docs/rasa-pro/installation/python/installation).
 
-2. Setup credentials
+2. Setup credentials.
+
 ```
 export RASA_PRO_LICENSE=<YOUR_RASA_LICENSE>
 export COHERE_API_KEY=<YOUR_COHERE_API_KEY>
 ```
 
-3. Create a model using `rasa train`
+3. Create a model using.
+
+ `rasa train`
 
 ### Run the components
 
-1. Run the action server in a different tab: `rasa run actions`
+1. Run the action server in a different tab.
 
-2. Run the Rasa server with an interactive shell
- - `rasa shell --enable-api`
+`rasa run actions`
+
+2. Run the Rasa server with an interactive shell.
+
+`rasa shell --enable-api`
  
 ### Run the manual test case to showcase how external triggers work in Rasa CALM
 
-1.  Get the conversation ID
-- From the Rasa shell, get the conversation ID typing something like: `I'd like to have the conversation ID`. It uses a [custom action](actions/action_tell_id.py) to get it.
+1.  Get the conversation ID.
 
-2. Trigger the intent using the Rasa API:
- - set the conversation id: `export conversation_id=<conversation_id>`
- - Trigger the intent:
+From the Rasa shell, get the conversation ID typing something like: `I'd like to have the conversation ID`. It uses a [custom action](actions/action_tell_id.py) to get it.
+
+2. Trigger the intent using the Rasa API.
+ - Set the conversation ID.
+ 
+ `export conversation_id=<conversation_id>`
+ - Trigger the intent.
+
     ```
     curl -H "Content-Type: application/json" -X POST -d \
     '{"name": "EXTERNAL_hello"}' \
     "http://localhost:5005/conversations/${conversation_id}/trigger_intent"
     ```
 
-3. Expected a response containing a json with the `messages` field set to `["Hi, dude! This message has been triggered by an external system, yeah!"]`
+3. Verufy that the response body containins a json with the `messages` field set to `["Hi, dude! This message has been triggered by an external system, yeah!"]`
